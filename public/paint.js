@@ -121,9 +121,13 @@ function updateCurrentTools() {
         $("#brush-size-options").removeClass("no-display");
         $("#tool-selected").html("Brush");
     } 
-    else if (currentTool == "5") {
+    else if (currentTool == "3") {
         $("#eraser-size-options").removeClass("no-display")
         $("#tool-selected").html("Eraser");
+    }
+    else if (currentTool == "4") {
+        $("#eraser-size-options").removeClass("no-display")
+        $("#tool-selected").html("Save");
     }
 }
 
@@ -135,16 +139,16 @@ $(".tool").click(function(e) {
     switch(currentTool){
         case "1":
             state.me.brushSize = 2;
-        break;
+            break;
         case "2":
             var selector = document.getElementById("brush-sizes");
             onBrushSizeChange(selector.options[selector.selectedIndex])
-        break;
-        case "5":
+            break;
+        case "3":
             var selector = document.getElementById("eraser-sizes");
             onBrushSizeChange(selector.options[selector.selectedIndex])
             state.me.color = '#fff'
-        break;
+            break;
     }
     updateCurrentTools();
 })

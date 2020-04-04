@@ -3,14 +3,31 @@ body {
     background-color: rgb(192,192,192);
 }
 
-img {
+.tool {
+    background-repeat: no-repeat;
+    background-position: center;
     height: 48px;
     width: 48px;
-    border: 3px;
 }
 
-td {
-    background-color: #a8a8a8;
+#\31 {
+    background-image: url("/win95styling/icons/pencil.png");
+    background-size: 48px;
+}
+
+#\32 {
+    background-image: url("/win95styling/icons/brush.png");
+    background-size: 48px;
+}
+
+#\33 {
+    background-image: url("/win95styling/icons/eraser.png");
+    background-size: 48px;
+}
+
+#\34 {
+    background-image: url("/win95styling/icons/save.png");
+    background-size: 48px;
 }
 
 #tools-window {
@@ -40,7 +57,7 @@ td {
 
 #tools-table td {
     text-align: center;
-    border: 2px solid #4f4f4f;
+    border: 2px solid #7d7d7d;
 }
 
 #tools-table td:hover {
