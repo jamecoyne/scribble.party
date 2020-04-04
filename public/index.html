@@ -1,0 +1,62 @@
+
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+	</head>
+<body>
+	<div id="tools-window">
+		<table id="tools-table">
+			<tr>
+				<td class="tool" id="1">Pencil</td>
+				<td class="tool" id="2">Brush</td>
+			</tr>
+			<tr>
+				<td class="tool" id="5">Erase</td>
+			</tr>
+		</table>
+		<table id="tools-selected-result">
+			<tr>
+				<td>Tool: </td>
+				<td id="tool-selected"></td>
+			</tr>
+			<tr>
+				<td>Color: </td>
+				<td id="color-selected">
+					<input type="color" id="current-color" name="head" value="#fff" onchange="setCurrentColor()">
+				</td>
+			</tr>
+			<tr id="brush-size-options" class="no-display">
+				<td>Brush Size</td>
+				<td>
+					<select id="brush-sizes" onchange="onBrushSizeChange(this)">
+						<option value="5">5</option>
+						<option value="10">10</option>
+						<option value="25">25</option>
+						<option value="50">50</option>
+					</select>
+				</td>
+			</tr>
+
+			<tr id="eraser-size-options" class="no-display">
+				<td>Eraser Size</td>
+				<td>
+					<select id="eraser-sizes" onchange="onBrushSizeChange(this)">
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+					</select>
+				</td>
+			</tr>
+		</table>
+	</div>
+	
+	<div id="paint">
+		<canvas id="myCanvas"></canvas>
+	</div>
+	<script src="paint.js"></script>
+</body>
+</html>            
