@@ -1,6 +1,5 @@
 var express = require('express');
 var socket = require('socket.io');
-// var fs = require("fs");
 const { createCanvas, loadImage, createImageData, Image } = require('canvas')
 const db = require("monk")(process.env.MONGODB_URI || "mongodb://localhost:27017/mydb");
 const drawingsCollection = db.get("drawings");
