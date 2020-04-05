@@ -43,7 +43,8 @@ body {
     float: right;
     border: 5px solid#00305F;
     background-color: white;
-    width: 80%;
+    /* width: 80%; */
+    width: 1152px; 
     height: 700px;
     position: fixed;
     left: 18%;
@@ -78,3 +79,8 @@ body {
 .no-display {
     display: none;
 }
+
+/* canvas{
+    width: 1152px; 
+    height:700px
+} */

@@ -15,7 +15,7 @@
 			</tr>
 			<tr>
 				<td id="3" class="tool"></td>
-				<td id="4" class="tool"></td>
+				<td id="4" class="tool" onclick="saveClicked()"></td>
 			</tr>
 		</table>
 		<table id="tools-selected-result">
@@ -46,9 +46,9 @@
 				<td>
 					<select id="eraser-sizes" onchange="onBrushSizeChange(this)">
 						<option value="1">1</option>
-						<option value="2">2</option>
-						<option value="3">3</option>
-						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="20">20</option>
+						<option value="50">50</option>
 					</select>
 				</td>
 			</tr>
@@ -56,8 +56,9 @@
 	</div>
 	
 	<div id="paint">
-		<canvas id="myCanvas"></canvas>
+		<canvas id="myCanvas"  onmouseenter="mouseLeave()" onmouseleave="mouseEnter()"></canvas>
 	</div>
 	<script src="paint.js"></script>
+	<a id="link"></a>
 </body>
 </html>            

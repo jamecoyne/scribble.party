@@ -30,6 +30,17 @@ var state = {
 };
 
 // #######################
+// fetch background
+// #######################
+
+let bgImg = new Image();
+bgImg.onload = () => { ctx.drawImage(bgImg, 0, 0) }
+fetch(window.location.origin + '/background')
+.then(response => response.text())
+.then(res => bgImg.src = res);
+
+
+// #######################
 // server side listeners
 // #######################
 
@@ -53,18 +64,20 @@ socket.on('mouseDown', function(data){
 
 // request data when the page first loads
 socket.on('requestData', function(data){
-    for(var drawing in data){
-        var currentDrawing = data[drawing];
-        strokeWeight(currentDrawing.brushSize);
-        stroke(currentDrawing.color);
+    console.log('requesting new data!');
+    console.log(data);
+    // for(var drawing in data){
+    //     var currentDrawing = data[drawing];
+    //     strokeWeight(currentDrawing.brushSize);
+    //     stroke(currentDrawing.color);
 
-        var oldPos = currentDrawing.pos;
-        for(pos in currentDrawing.drawing){
-            var pos = currentDrawing.drawing[pos];
-            line(oldPos.x, oldPos.y, pos.x, pos.y);
-            oldPos = pos;
-        }
-    }
+    //     var oldPos = currentDrawing.pos;
+    //     for(pos in currentDrawing.drawing){
+    //         var pos = currentDrawing.drawing[pos];
+    //         line(oldPos.x, oldPos.y, pos.x, pos.y);
+    //         oldPos = pos;
+    //     }
+    // }
 });
 socket.emit('requestData', {});
 
@@ -101,6 +114,13 @@ function mouseReleased(){
 // #######################
 // UI functions
 // #######################
+
+function saveClicked(){
+    var link = document.getElementById('link');
+    link.setAttribute('download', 'scribble-party.png');
+    link.setAttribute('href', canvas.toDataURL("image/png").replace("image/png", "image/octet-stream"));
+    link.click();
+}
 
 function onBrushSizeChange(selector){
     state.me.brushSize = selector.value;
@@ -197,3 +217,19 @@ canvas.addEventListener('mouseup', function() {
     mouseIsPressed = false;
     mouseReleased();
 }, false);
+
+function mouseLeave(){
+    console.log('mouse left');
+    mouseIsPressed = false;
+    mouseReleased();
+}
+
+function mouseEnter(){
+    mouseX = e.clientX - painting.offsetLeft;
+    mouseY = e.clientY - painting.offsetTop;
+    mousePressed();
+    if(mouseIsPressed){
+        mouseDragged();
+    }
+    console.log('mouse enter');
+}
