@@ -2,13 +2,15 @@
 // canvas setup
 // #######################
 
+var windowTitle = document.getElementById('windowTitle');
+
 var canvas = document.getElementById('myCanvas');
 var ctx = canvas.getContext('2d');
 var painting = document.getElementById('paint');
 var paint_style = getComputedStyle(painting);
 
 canvas.width = parseInt(paint_style.getPropertyValue('width'));
-canvas.height = parseInt(paint_style.getPropertyValue('height'));
+canvas.height = parseInt(paint_style.getPropertyValue('height'))-22;
 ctx.lineJoin = 'round';
 ctx.lineCap = 'round';
 
@@ -200,7 +202,7 @@ var mouseY = 0;
 
 canvas.addEventListener('mousemove', function(e) {
     mouseX = e.clientX - painting.offsetLeft;
-    mouseY = e.clientY - painting.offsetTop;
+    mouseY = e.clientY - painting.offsetTop - 24;
     if(mouseIsPressed){
         mouseDragged();
     }
@@ -208,7 +210,7 @@ canvas.addEventListener('mousemove', function(e) {
 
 canvas.addEventListener('mousedown', function(e) {
     mouseX = e.clientX - painting.offsetLeft;
-    mouseY = e.clientY - painting.offsetTop;
+    mouseY = e.clientY - painting.offsetTop - 24;
     mouseIsPressed = true;
     mousePressed();
 }, false);
@@ -225,8 +227,9 @@ function mouseLeave(){
 }
 
 function mouseEnter(){
+    console.log(windowTitle);
     mouseX = e.clientX - painting.offsetLeft;
-    mouseY = e.clientY - painting.offsetTop;
+    mouseY = e.clientY - painting.offsetTop - 24;
     mousePressed();
     if(mouseIsPressed){
         mouseDragged();

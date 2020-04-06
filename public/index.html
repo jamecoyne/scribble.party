@@ -3,11 +3,13 @@
 <html>
 	<head>
 		<link rel="stylesheet" type="text/css" href="style.css">
+		<link rel="stylesheet" type="text/css" href="win95.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 		<script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
 	</head>
 <body>
-	<div id="tools-window">
+	<div id="tools-window" class="card">
+		<div class="card-header">Tools</div>
 		<table id="tools-table">
 			<tr>
 				<td id="1" class="tool"></td>
@@ -55,8 +57,9 @@
 		</table>
 	</div>
 	
-	<div id="paint">
-		<canvas id="myCanvas"  onmouseenter="mouseLeave()" onmouseleave="mouseEnter()"></canvas>
+	<div id="paint" class="card">
+		<div class="card-header" id="windowTitle">Draw Stuff Here</div>
+			<canvas id="myCanvas"  onmouseenter="mouseLeave()" onmouseleave="mouseEnter()"></canvas>
 	</div>
 	<script src="paint.js"></script>
 	<a id="link"></a>
