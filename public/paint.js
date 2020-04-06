@@ -200,6 +200,8 @@ var mouseIsPressed = false;
 var mouseX = 0;
 var mouseY = 0;
 
+// desktop event listeners
+
 canvas.addEventListener('mousemove', function(e) {
     mouseX = e.clientX - painting.offsetLeft;
     mouseY = e.clientY - painting.offsetTop - 24;
@@ -220,8 +222,33 @@ canvas.addEventListener('mouseup', function() {
     mouseReleased();
 }, false);
 
+// mobile event listeners
+
+canvas.addEventListener('touchmove', function(e) {
+    mouseX = (event.targetTouches[0] ? event.targetTouches[0].pageX : event.changedTouches[event.changedTouches.length-1].pageX)
+    - painting.offsetLeft;
+    mouseY = (event.targetTouches[0] ? event.targetTouches[0].pageY : event.changedTouches[event.changedTouches.length-1].pageY)
+    - painting.offsetTop - 24;
+    if(mouseIsPressed){
+        mouseDragged();
+    }
+}, false);
+
+canvas.addEventListener('touchstart', function(e) {
+    mouseX = (event.targetTouches[0] ? event.targetTouches[0].pageX : event.changedTouches[event.changedTouches.length-1].pageX)
+    - painting.offsetLeft;
+    mouseY = (event.targetTouches[0] ? event.targetTouches[0].pageY : event.changedTouches[event.changedTouches.length-1].pageY)
+    - painting.offsetTop - 24;
+    mouseIsPressed = true;
+    mousePressed();
+}, false);
+
+canvas.addEventListener('touchend', function() {
+    mouseIsPressed = false;
+    mouseReleased();
+}, false);
+
 function mouseLeave(){
-    console.log('mouse left');
     mouseIsPressed = false;
     mouseReleased();
 }
@@ -234,5 +261,4 @@ function mouseEnter(){
     if(mouseIsPressed){
         mouseDragged();
     }
-    console.log('mouse enter');
 }
