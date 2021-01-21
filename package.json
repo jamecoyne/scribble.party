@@ -16,6 +16,6 @@
     "monk": "^7.1.2",
     "nodemon": "^2.0.2",
     "pureimage": "^0.2.1",
-    "socket.io": "^2.3.0"
+    "socket.io": "^2.4.0"
   }
 }
